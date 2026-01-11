@@ -276,6 +276,15 @@ body {
   border-top: 1px solid var(--color-border);
   font-size: 0.75rem;
   color: var(--color-text-muted);
+  gap: 0.5rem;
+}
+
+.tile-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .tile-author {
@@ -285,8 +294,15 @@ body {
   white-space: nowrap;
 }
 
+.tile-stars {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.8125rem;
+}
+
 .tile-updated {
   flex-shrink: 0;
+  font-size: 0.6875rem;
 }
 
 .plugin-header {
@@ -686,6 +702,11 @@ body {
   font-size: 0.875rem;
   color: var(--color-text);
   font-weight: 500;
+}
+
+.detail-stars {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .detail-badge {

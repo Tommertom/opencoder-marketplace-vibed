@@ -1,6 +1,7 @@
-import { Show } from 'solid-js';
+import { Show, createSignal, onMount } from 'solid-js';
 import { SolidMarkdown } from 'solid-markdown';
 import type { Plugin } from '../data/types';
+import { fetchGitHubStars } from '../utils/github';
 
 interface PluginDetailProps {
   plugin: Plugin;
@@ -8,6 +9,20 @@ interface PluginDetailProps {
 }
 
 export function PluginDetail(props: PluginDetailProps) {
+  const [stars, setStars] = createSignal<number | null>(null);
+
+  onMount(async () => {
+    const starCount = await fetchGitHubStars(props.plugin.links.repository);
+    setStars(starCount);
+  });
+
+  const formatStars = (count: number): string => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k`;
+    }
+    return count.toString();
+  };
+
   const handleBackdropClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       props.onClose();
@@ -36,6 +51,15 @@ export function PluginDetail(props: PluginDetailProps) {
                   {props.plugin.maintained ? '✓ Maintained' : '⚠ Unmaintained'}
                 </span>
               </div>
+
+              <Show when={stars() !== null}>
+                <div class="detail-meta-item">
+                  <span class="detail-meta-label">GitHub Stars</span>
+                  <span class="detail-meta-value detail-stars">
+                    ⭐ {formatStars(stars()!)}
+                  </span>
+                </div>
+              </Show>
 
               <div class="detail-meta-item">
                 <span class="detail-meta-label">License</span>

@@ -1,4 +1,6 @@
+import { createSignal, onMount, Show } from 'solid-js';
 import type { Plugin } from '../data/types';
+import { fetchGitHubStars } from '../utils/github';
 
 interface PluginTileProps {
   plugin: Plugin;
@@ -6,6 +8,22 @@ interface PluginTileProps {
 }
 
 export function PluginTile(props: PluginTileProps) {
+  const [stars, setStars] = createSignal<number | null>(null);
+  const [loading, setLoading] = createSignal(true);
+
+  onMount(async () => {
+    const starCount = await fetchGitHubStars(props.plugin.links.repository);
+    setStars(starCount);
+    setLoading(false);
+  });
+
+  const formatStars = (count: number): string => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k`;
+    }
+    return count.toString();
+  };
+
   return (
     <article class="plugin-tile" onClick={props.onClick}>
       <div class="tile-header">
@@ -27,7 +45,14 @@ export function PluginTile(props: PluginTileProps) {
       </div>
       
       <div class="tile-footer">
-        <span class="tile-author">{props.plugin.authors[0].name}</span>
+        <div class="tile-footer-left">
+          <span class="tile-author">{props.plugin.authors[0].name}</span>
+          <Show when={!loading() && stars() !== null}>
+            <span class="tile-stars">
+              ⭐ {formatStars(stars()!)}
+            </span>
+          </Show>
+        </div>
         <span class="tile-updated">{props.plugin.lastUpdated}</span>
       </div>
     </article>
