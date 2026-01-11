@@ -16,57 +16,9 @@ A community-driven marketplace for discovering and sharing OpenCode plugins.
 
 Visit the marketplace at: [https://opencode-plugin-market.web.app](https://opencode-plugin-market.web.app)
 
-## 🤝 Contributing a Plugin
-
-Want to add your plugin to the marketplace? It's easy!
-
-### Quick Start
-
-1. **Fork this repository**
-
-2. **Create a plugin JSON file** in the `plugins/` directory:
-   - Filename: `your-plugin-name.plugin.json`
-   - Must match the `name` field in the JSON
-
-3. **Fill out the required information** (see schema below)
-
-4. **Submit a Pull Request**
-   - Our CI will automatically validate your submission
-   - Once approved, your plugin appears on the marketplace
+## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
-
-### Plugin JSON Example
-
-```json
-{
-  "name": "example-plugin",
-  "displayName": "Example Plugin",
-  "description": "A demonstration plugin for the marketplace.",
-  "categories": ["Development", "Utilities"],
-  "authors": [
-    {
-      "name": "John Doe",
-      "url": "https://github.com/johndoe"
-    }
-  ],
-  "license": "MIT",
-  "links": {
-    "repository": "https://github.com/example/example-plugin",
-    "homepage": "https://example.com",
-    "documentation": "https://docs.example.com"
-  },
-  "opencode": {
-    "minimumVersion": "1.0.0"
-  },
-  "installation": {
-    "summary": "Install via npm and configure in settings.",
-    "markdown": "## Installation\n\n```bash\nnpm install example-plugin\n```"
-  },
-  "maintained": true,
-  "lastUpdated": "2026-01-10"
-}
-```
 
 ## 📋 JSON Schema
 
