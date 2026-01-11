@@ -48,10 +48,40 @@ function App() {
 
   const openPlugin = (plugin: Plugin) => {
     setSelectedPlugin(plugin);
+    // Update page title and meta for SEO
+    document.title = `${plugin.displayName} - OpenCode Plugin Marketplace`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', plugin.description);
+    }
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', `${plugin.displayName} - OpenCode Plugin Marketplace`);
+    }
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', plugin.description);
+    }
   };
 
   const closePlugin = () => {
     setSelectedPlugin(null);
+    // Reset to default title and meta
+    document.title = 'OpenCode Plugin Marketplace';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'OpenCode Plugin Marketplace - Discover and contribute plugins for OpenCode. Find productivity, development, UI/UX, testing, debugging, documentation, integration, utilities, and provider plugins.');
+    }
+    // Reset Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'OpenCode Plugin Marketplace');
+    }
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Discover and contribute plugins for OpenCode. Find tools for productivity, development, testing, and more.');
+    }
   };
 
   return (

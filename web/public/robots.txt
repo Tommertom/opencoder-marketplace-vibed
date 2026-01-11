@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://opencode-plugin-market.web.app/sitemap.xml
