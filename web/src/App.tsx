@@ -1,18 +1,49 @@
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, Show, onMount, createResource } from "solid-js";
 import { plugins, categories } from "./data/plugins";
 import { PluginTile } from "./components/PluginTile";
 import { PluginDetail } from "./components/PluginDetail";
 import type { Plugin } from "./data/types";
+import { fetchGitHubStars } from "./utils/github";
 import "./App.css";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = createSignal<string>("all");
   const [selectedPlugin, setSelectedPlugin] = createSignal<Plugin | null>(null);
+  const [pluginStars, setPluginStars] = createSignal<Map<string, number>>(new Map());
+
+  onMount(async () => {
+    const starsMap = new Map<string, number>();
+    await Promise.all(
+      plugins.map(async (plugin) => {
+        const stars = await fetchGitHubStars(plugin.links.repository);
+        if (stars !== null) {
+          starsMap.set(plugin.name, stars);
+        }
+      })
+    );
+    setPluginStars(starsMap);
+  });
+
+  const sortedPlugins = (pluginList: Plugin[]) => {
+    const starsMap = pluginStars();
+    return [...pluginList].sort((a, b) => {
+      const starsA = starsMap.get(a.name) ?? -1;
+      const starsB = starsMap.get(b.name) ?? -1;
+      
+      if (starsA !== starsB) {
+        return starsB - starsA;
+      }
+      
+      return a.displayName.localeCompare(b.displayName);
+    });
+  };
 
   const filteredPlugins = () => {
     const category = selectedCategory();
-    if (category === "all") return plugins;
-    return plugins.filter((p) => p.categories.includes(category));
+    const filtered = category === "all" 
+      ? plugins 
+      : plugins.filter((p) => p.categories.includes(category));
+    return sortedPlugins(filtered);
   };
 
   const openPlugin = (plugin: Plugin) => {
@@ -98,6 +129,7 @@ function App() {
                 {(plugin) => (
                   <PluginTile
                     plugin={plugin}
+                    stars={pluginStars().get(plugin.name) ?? null}
                     onClick={() => openPlugin(plugin)}
                   />
                 )}
