@@ -1,0 +1,28 @@
+{
+  "name": "octto",
+  "displayName": "octto",
+  "description": "Interactive brainstorming UI for OpenCode agents featuring multi-question forms, decisions, and real-time feedback with 14 visual input types.",
+  "categories": ["UI/UX"],
+  "authors": [
+    {
+      "name": "vtemian",
+      "url": "https://github.com/vtemian"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/vtemian/octto"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Install via npm and add to OpenCode configuration for interactive brainstorming UI.",
+    "markdown": "## Installation\n\n### Via npm\n```bash\nnpm install octto\n```\n\nAdd to `~/.config/opencode/opencode.json`:\n```json\n{\n  \"plugin\": [\"octto\"]\n}\n```\n\n### Local Development\n```bash\ngit clone https://github.com/vtemian/octto.git ~/.octto\ncd ~/.octto && bun install && bun run build\n```\n\nThen use:\n```json\n{\n  \"plugin\": [\"~/.octto\"]\n}\n```"
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Interactive Brainstorming\nSelect the **octto** agent and describe your idea:\n```\nI want to add a caching layer to the API\n```\n\nAn interactive browser UI opens for clicking through options.\n\n### Question Types\n- **pick_one** - Radio buttons\n- **pick_many** - Checkboxes  \n- **confirm** - Yes/No buttons\n- **slider** - Draggable range\n- **rank** - Drag to reorder\n- **rate** - Star rating\n- **thumbs** - Thumbs up/down\n- **show_options** - Cards with pros/cons\n- **show_diff** - Side-by-side code diff\n- **ask_code** - Syntax-highlighted editor\n- **ask_text** - Text input\n- **ask_image** - Image upload\n- **ask_file** - File upload\n- **emoji_react** - Emoji picker\n\n### Workflow\n1. **Bootstrapper** splits request into 2-4 exploration branches\n2. **Initial questions** appear in browser UI\n3. **Answer in any order** by clicking options\n4. **Follow-ups appear** dynamically based on answers\n5. **Final plan** generated and saved to `docs/plans/`\n\n### Parallel Exploration\nMultiple branches investigated simultaneously, with progress indicators showing remaining questions."
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

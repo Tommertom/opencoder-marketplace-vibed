@@ -1,5 +1,5 @@
 const CACHE_KEY = 'github_stars_cache';
-const CACHE_DURATION = 1000 * 60 * 60; // 1 hour
+const CACHE_DURATION = 1000 * 60 * 60 * 24 * 5; // 5 days
 
 interface CacheEntry {
   stars: number;

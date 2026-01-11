@@ -1,0 +1,28 @@
+{
+  "name": "opencode-context-analysis",
+  "displayName": "OpenCode Context Analysis",
+  "description": "A powerful plugin that provides detailed token usage analysis for your AI sessions, tracking how tokens are distributed across system prompts, user messages, and tool outputs.",
+  "categories": ["Productivity"],
+  "authors": [
+    {
+      "name": "IgorWarzocha",
+      "url": "https://github.com/IgorWarzocha"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/IgorWarzocha/Opencode-Context-Analysis-Plugin"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Clone the plugin and copy the .opencode folder to your project root for local analysis.",
+    "markdown": "## Installation\n\n### For a Single Project\n\n```bash\ngit clone https://github.com/IgorWarzocha/Opencode-Context-Analysis-Plugin.git\ncp -r Opencode-Context-Analysis-Plugin/.opencode ./\n```\n\nRestart OpenCode and use `/context` command.\n\n### For All Projects (Global)\n\n```bash\ngit clone https://github.com/IgorWarzocha/Opencode-Context-Analysis-Plugin.git\ncp -r Opencode-Context-Analysis-Plugin/.opencode ~/.config/opencode/\n```\n\nThe plugin automatically handles tokenizer dependencies on first use."
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Basic Commands\n\n- `/context` - Standard token usage analysis\n- `/context detailed` - More detailed breakdown\n- `/context short` - Quick summary\n- `/context verbose` - Maximum detail\n\n### Advanced Options\n\n- `/context \"extremely detailed\"` - Custom verbosity\n- `/context sessionID:your-session-id` - Analyze specific session\n- `/context limitMessages:5` - Limit analysis depth\n\n### Features\n\n- **Visual Charts**: Bar charts showing token distribution\n- **Tool Analysis**: See which tools consume most tokens\n- **Multi-Model Support**: Works with OpenAI, Claude, Llama, Mistral, etc.\n- **Local Processing**: All analysis happens locally, no data sent externally"
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

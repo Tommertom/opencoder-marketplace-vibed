@@ -1,0 +1,28 @@
+{
+  "name": "opencode-notify",
+  "displayName": "OpenCode Notify",
+  "description": "Native OS notifications for OpenCode – know when tasks complete, errors occur, or the AI needs your input without constant tab switching.",
+  "categories": ["Utilities"],
+  "authors": [
+    {
+      "name": "kdcokenny",
+      "url": "https://github.com/kdcokenny"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/kdcokenny/opencode-notify"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Install via OCX package manager for native OS notifications.",
+    "markdown": "## Installation\n\n### Via OCX (Recommended)\n```bash\n# Install OCX package manager\ncurl -fsSL https://ocx.kdco.dev/install.sh | sh\n\n# Add KDCO registry and install notify\nocx init\nocx registry add --name kdco https://registry.kdco.dev\nocx add kdco/notify\n```\n\n### Via Workspace Bundle\n```bash\nocx add kdco/workspace\n```\n\n### Manual Installation\nCopy source from `src/` to `.opencode/plugin/` and manually install dependencies:\n```bash\nnpm install node-notifier detect-terminal\n```"
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Automatic Notifications\nPlugin automatically notifies for:\n- **Session complete** - Main task finished (Glass sound)\n- **Session error** - Something broke (Basso sound)\n- **Permission needed** - AI is blocked and waiting (Submarine sound)\n\n### Smart Behavior\n- **No spam** - Only notifies for meaningful events\n- **Focus detection** - Suppresses notifications when terminal is active\n- **Cross-platform** - Native notifications on macOS, Windows, Linux\n- **Click-to-focus** - Click notification to bring terminal to foreground\n\n### Configuration\nOptional `~/.config/opencode/kdco-notify.json`:\n```json\n{\n  \"enabled\": true,\n  \"notifyChildSessions\": false,\n  \"suppressWhenFocused\": true,\n  \"sounds\": {\n    \"idle\": \"Glass\",\n    \"error\": \"Basso\",\n    \"permission\": \"Submarine\"\n  }\n}\n```\n\n### Terminal Support\nAutomatically detects and supports 37+ terminals including Ghostty, Kitty, iTerm2, WezTerm, Alacritty, Hyper, Terminal.app, Windows Terminal, and VS Code integrated terminal."
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

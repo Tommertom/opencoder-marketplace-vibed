@@ -1,0 +1,28 @@
+{
+  "name": "claude-code-safety-net",
+  "displayName": "Claude Code Safety Net",
+  "description": "A safety net plugin that blocks destructive git and filesystem commands before they execute, preventing accidental data loss.",
+  "categories": ["Utilities"],
+  "authors": [
+    {
+      "name": "kenryu42",
+      "url": "https://github.com/kenryu42"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/kenryu42/claude-code-safety-net"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Install via npm and copy command files to enable safety hooks for destructive operations.",
+    "markdown": "## Installation\n\n```bash\nnpm install claude-code-safety-net\n```\n\nAdd to your OpenCode config:\n\n```json\n{\n  \"plugin\": [\"claude-code-safety-net\"]\n}\n```\n\nCopy the command files to `~/.config/opencode/command/`:\n- `set-custom-rules.md`\n- `verify-custom-rules.md`\n\nRestart OpenCode to activate the safety hooks."
+  },
+  "usage": {
+    "markdown": "## Usage\n\nOnce installed, the plugin automatically blocks destructive commands including:\n\n### Blocked Git Commands\n- `git reset --hard` - Destroys uncommitted changes\n- `git checkout -- files` - Discards uncommitted changes\n- `git push --force` - Destroys remote history\n- `git clean -f` - Removes untracked files permanently\n\n### Blocked File Operations\n- `rm -rf /` - Root directory deletion\n- `rm -rf ~` - Home directory deletion\n- `find ... -delete` - Bulk file deletion\n\n### Custom Rules\nUse the `/set-custom-rules` command to define project-specific blocking rules for team conventions or safety policies.\n\n### Verification\nUse `/verify-custom-rules` to validate your custom rule configuration."
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

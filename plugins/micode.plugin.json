@@ -1,0 +1,28 @@
+{
+  "name": "micode",
+  "displayName": "micode",
+  "description": "OpenCode plugin with structured Brainstorm → Plan → Implement workflow and session continuity, featuring parallel subagents and git worktree isolation.",
+  "categories": ["Productivity"],
+  "authors": [
+    {
+      "name": "vtemian",
+      "url": "https://github.com/vtemian"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/vtemian/micode"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Install via npm and add to OpenCode configuration for structured development workflow.",
+    "markdown": "## Installation\n\n### Via npm\n```bash\nnpm install micode\n```\n\nAdd to `~/.config/opencode/opencode.json`:\n```json\n{\n  \"plugin\": [\"micode\"]\n}\n```\n\n### Local Development\n```bash\ngit clone https://github.com/vtemian/micode.git ~/.micode\ncd ~/.micode && bun install && bun run build\n```\n\nThen use:\n```json\n{\n  \"plugin\": [\"~/.micode\"]\n}\n```\n\n### Initialization\nRun `/init` after installation to generate `ARCHITECTURE.md` and `CODE_STYLE.md`."
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Workflow\n1. **Brainstorm** - Refine ideas into designs with collaborative questioning\n2. **Plan** - Transform designs into bite-sized implementation tasks\n3. **Implement** - Execute in isolated git worktrees with implementer→reviewer cycles\n\n### Commands\n- `/init` - Initialize project documentation\n- `/ledger` - Create/update continuity ledger for session context\n- `/search` - Search past plans and ledgers\n\n### Features\n- **Session Continuity** - Maintain context across sessions with structured compaction\n- **Parallel Research** - Spawn multiple subagents for investigation\n- **Git Worktree Isolation** - Safe implementation in isolated environments\n- **AST-Aware Tools** - Advanced code analysis and pattern matching\n- **Auto-Compaction** - Automatic context summarization at 50% usage\n- **Token-Aware Truncation** - Smart handling of large outputs\n\n### Agents\n- **commander** - Main orchestrator\n- **brainstormer** - Design exploration\n- **planner** - Implementation planning\n- **executor** - Task orchestration\n- **implementer** - Code execution\n- **reviewer** - Quality verification"
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

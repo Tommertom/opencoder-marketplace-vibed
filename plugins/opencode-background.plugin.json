@@ -1,0 +1,28 @@
+{
+  "name": "opencode-background",
+  "displayName": "OpenCode Background Processes",
+  "description": "Background process management plugin offering robust process tracking and lifecycle management with tagging and filtering capabilities.",
+  "categories": ["Utilities"],
+  "authors": [
+    {
+      "name": "airtonix",
+      "url": "https://github.com/airtonix"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/zenobi-us/opencode-background"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Install via npm and add to OpenCode configuration for background process management.",
+    "markdown": "## Installation\n\n### Via npm\n```bash\nnpm install @zenobius/opencode-background\n```\n\nAdd to `~/.config/opencode/config.json`:\n```json\n{\n  \"plugins\": [\"@zenobius/opencode-background\"]\n}\n```\n\n### Local Development\n```bash\ngit clone https://github.com/zenobi-us/opencode-background.git ~/.opencode-background\ncd ~/.opencode-background && bun install && bun run build\n```\n\nThen use:\n```json\n{\n  \"plugins\": [\"~/.opencode-background\"]\n}\n```"
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Creating Background Processes\n```bash\n⚙ createBackgroundProcess\n  command=/tmp/long-process.sh\n  name=\"Long Running Process\"\n  tags=[\"long-process\", \"processing\"]\n  global=false\n```\n\n### Process Types\n- **Session-Specific** (default): Auto-terminated when session ends\n- **Global**: Persist across sessions until explicitly stopped\n\n### Listing and Filtering\n```bash\n⚙ listBackgroundProcesses\n  sessionId=current_session_id\n\n⚙ listBackgroundProcesses\n  tags=[\"processing\"]\n```\n\n### Process Termination\n```bash\n⚙ killProcesses\n  processId=specific-process-id\n\n⚙ killProcesses\n  tags=[\"critical\"]\n```\n\n### Features\n- **Real-time output tracking** (last 100 lines)\n- **Process tagging** for categorization\n- **Advanced filtering** by session, status, or tags\n- **Automatic cleanup** on session/application close\n- **Process states**: pending, running, completed, failed, cancelled\n- **Detailed metadata**: start/completion times, error tracking"
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

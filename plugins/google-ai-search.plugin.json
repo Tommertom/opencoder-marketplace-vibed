@@ -1,0 +1,28 @@
+{
+  "name": "google-ai-search",
+  "displayName": "Google AI Search",
+  "description": "An OpenCode plugin that exposes a native tool for querying Google AI Mode (SGE), providing direct access to Google's AI search capabilities.",
+  "categories": ["Integration"],
+  "authors": [
+    {
+      "name": "IgorWarzocha",
+      "url": "https://github.com/IgorWarzocha"
+    }
+  ],
+  "license": "MIT",
+  "links": {
+    "repository": "https://github.com/IgorWarzocha/Opencode-Google-AI-Search-Plugin"
+  },
+  "opencode": {
+    "minimumVersion": "1.0.0"
+  },
+  "installation": {
+    "summary": "Clone the plugin, install dependencies including Playwright, and add to OpenCode configuration.",
+    "markdown": "## Installation\n\n1. **Clone the plugin**:\n```bash\ngit clone https://github.com/IgorWarzocha/Opencode-Google-AI-Search-Plugin.git\ncd Opencode-Google-AI-Search-Plugin\n```\n\n2. **Install dependencies**:\n```bash\nbun install\nbun run build\nnpx playwright install chromium\n```\n\n3. **Add to OpenCode config** (`opencode.json`):\n```json\n{\n  \"plugin\": [\n    \"file:///absolute/path/to/google_ai_search/dist/index.js\"\n  ]\n}\n```\n\n4. **Restart OpenCode** to load the new `google_ai_search_plus` tool."
+  },
+  "usage": {
+    "markdown": "## Usage\n\n### Basic Query\n```bash\ngoogle_ai_search_plus \"What is the difference between TypeScript and JavaScript?\"\n```\n\n### Parameters\n- `query` (string): Question or topic to submit to Google AI Mode\n- `timeout` (number, optional): Timeout in seconds (default 30, max 120)\n- `followUp` (boolean, optional): Treat as part of same conversation\n\n### Features\n- **Direct AI Mode Access**: Queries Google AI Mode directly using Playwright\n- **Markdown Output**: Converts responses to markdown for proper rendering\n- **Rich Metadata**: Includes response time, source count, and table detection\n- **Stealth Headers**: Uses browser headers to avoid detection\n\n**Note**: Google may throttle automated traffic. Reduce query frequency if you encounter blocking errors."
+  },
+  "maintained": true,
+  "lastUpdated": "2026-01-11"
+}

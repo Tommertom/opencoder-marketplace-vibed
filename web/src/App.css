@@ -81,6 +81,30 @@ body {
   padding: 2rem 1rem;
   text-align: center;
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.github-link {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--color-text);
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.github-link:hover {
+  color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+.github-link svg {
+  display: block;
 }
 
 .header h1 {
@@ -767,6 +791,19 @@ body {
   margin-bottom: 0;
 }
 
+.star-history-chart {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.star-history-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-md);
+  background: var(--color-bg);
+  display: block;
+}
+
 .detail-categories {
   display: flex;
   flex-wrap: wrap;
@@ -944,6 +981,18 @@ body {
 
   .header h1 {
     font-size: 1.75rem;
+  }
+
+  .github-link {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .github-link svg {
+    width: 28px;
+    height: 28px;
   }
 
   .plugin-header {

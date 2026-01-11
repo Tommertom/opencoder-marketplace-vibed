@@ -1,7 +1,7 @@
 import { Show, createSignal, onMount } from 'solid-js';
 import { SolidMarkdown } from 'solid-markdown';
 import type { Plugin } from '../data/types';
-import { fetchGitHubStars } from '../utils/github';
+import { fetchGitHubStars, extractRepoInfo } from '../utils/github';
 
 interface PluginDetailProps {
   plugin: Plugin;
@@ -21,6 +21,12 @@ export function PluginDetail(props: PluginDetailProps) {
       return `${(count / 1000).toFixed(1)}k`;
     }
     return count.toString();
+  };
+
+  const getStarHistoryUrl = (): string | null => {
+    const repoInfo = extractRepoInfo(props.plugin.links.repository);
+    if (!repoInfo) return null;
+    return `https://api.star-history.com/svg?repos=${repoInfo.owner}/${repoInfo.repo}&type=Date`;
   };
 
   const handleBackdropClick = (e: MouseEvent) => {
@@ -79,6 +85,19 @@ export function PluginDetail(props: PluginDetailProps) {
                 </span>
               </div>
             </div>
+
+            <Show when={getStarHistoryUrl()}>
+              <div class="detail-meta-section">
+                <h3>Star History</h3>
+                <div class="star-history-chart">
+                  <img 
+                    src={getStarHistoryUrl()!} 
+                    alt="Star History Chart" 
+                    class="star-history-img"
+                  />
+                </div>
+              </div>
+            </Show>
 
             <div class="detail-meta-section">
               <h3>Authors</h3>
